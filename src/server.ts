@@ -36,9 +36,10 @@ export class JSONRPCServer<
 > {
     protected methods: Methods
 
-    constructor()
-    constructor(methods: Methods)
-    constructor(methods?: Methods) {
+    constructor(
+        methods?: Methods,
+        private onError?: (error: unknown) => unknown,
+    ) {
         this.methods = methods || ({} as Methods)
     }
 
@@ -216,6 +217,7 @@ export class JSONRPCServer<
                     result: await methodFn(params),
                 })
             } catch (error) {
+                this.onError?.(error)
                 return new JSONRPCErrorResponse({
                     id,
                     error:
@@ -230,7 +232,8 @@ export class JSONRPCServer<
 
         try {
             await methodFn?.(params)
-        } catch {
+        } catch(err: unknown) {
+            this.onError?.(err)
             // ignore as request is notification
         }
     }

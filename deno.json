@@ -1,6 +1,6 @@
 {
-    "name": "@yieldray/json-rpc-ts",
-    "version": "0.2.1",
+    "name": "@giveback007/json-rpc-ts",
+    "version": "0.2.2",
     "exports": "./mod.ts",
     "publish": {
         "include": [
