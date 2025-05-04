@@ -38,7 +38,7 @@ export class JSONRPCServer<
 
     constructor(
         methods?: Methods,
-        private onError?: (error: unknown) => unknown,
+        private onError?: <T = unknown>(error: T) => unknown,
     ) {
         this.methods = methods || ({} as Methods)
     }

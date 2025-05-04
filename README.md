@@ -1,4 +1,5 @@
 > Fork of: https://github.com/YieldRay/json-rpc-ts
+(Added `onError` callback in the constructor args)
 
 # json-rpc-ts
 
